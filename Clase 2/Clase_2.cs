@@ -13,14 +13,20 @@ namespace Clase_2
 			Console.ReadKey(true);
 		}
 		//Ejercicio n°7
-		public static void ImprimirElemt(Coleccionable C){
-			//para todos los elementos elem del coleccionable
-			//imprimir(elem)
+		public static void ImprimirElemt(Iterable C){
+			 C.crearIterador();
+			if (C !=null) {
+			 	Console.WriteLine("Los datos son: ");
+			 	Console.WriteLine(C.crearIterador().Actual());
+			 		C.crearIterador().Siguiente();
+			}
+			 else 
+			 	Console.WriteLine("La lista esta vacia.");
 		}
 	}
 	//Jerarquia de Estrategia--//Ejercicio n°1
 	//1)CREAR La super clase
-	public interface Estrategia_Comp{ //leandro cambio todo aqui**
+	public interface Estrategia_Comp{
 		bool sosIgual(Comparable a, Comparable b);
 		bool sosMayor(Comparable a, Comparable b);
 		bool sosMenor(Comparable a, Comparable b);
@@ -41,6 +47,9 @@ namespace Clase_2
 
 		public bool sosMenor(Comparable a, Comparable b){
 			return (((alumno)a).GetNombre().CompareTo(((alumno)b).GetNombre()) == -1);
+		}
+		public string Imrimir(Comparable a){
+			return "NOMBRE: "+ ((alumno)a).GetNombre();
 		}
 	}//termiado
 	public class porDNI : Estrategia_Comp{
@@ -122,8 +131,13 @@ namespace Clase_2
 	}
 	
 	//Ejercicio n°3
-	public class Conjunto : Coleccionable{
+	public class Conjunto : Coleccionable,Iterable{
 		private List<Comparable> Conjunt;
+		private int Contador;
+		
+		public Iterator crearIterador(){
+    		return new IteradorDeCollection(Conjunt,Contador);
+    	}
 		
 		public Conjunto(){
         	Conjunt = new List<Comparable>();
@@ -210,7 +224,7 @@ namespace Clase_2
 		}
 		
 	}
-	public class Dictionary : ClaveValor , Comparable{
+	public class Dictionary : ClaveValor{
 		private List<ClaveValor> ClV;
 		private int x = 1;
 		
@@ -273,6 +287,34 @@ namespace Clase_2
 		}
 	}
 	
+	//Ejercicio n°6
+	public class IteradorDeDic : Iterator{
+		private int Cont;
+		private List<ClaveValor> Lista;
+		
+		public IteradorDeDic(List<ClaveValor> L,int Cont) {
+			L= Lista;
+			Cont=0;
+		}
+		
+		public void Primero(){
+			Cont=0;
+		}
+		public void Siguiente(){
+			Cont++;
+		}
+		public bool Fin(){
+			if (Cont>=Lista.Count) 
+				return true;
+			else
+				return false;
+		}
+		
+		public Iterable Actual(){
+			return (Iterable)Lista[Cont].GetValor();
+		}
+	
+	}
 	
 
 }

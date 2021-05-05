@@ -46,9 +46,14 @@ namespace Clase_1
     	void cambiarEst_Alumnos(Estrategia_Comp e);
 	}
 	// Ejercicio n°4
-	public class Pila : Coleccionable{
+	public class Pila : Coleccionable, Iterable{
     	private List<Comparable> elementos;
-		
+    	private int Contador;
+    	
+    	public Iterator crearIterador(){
+    		return new IteradorDeCollection(elementos,Contador);
+    	}
+    	
     	public Pila(){
         	elementos = new List<Comparable>();
     	}
@@ -56,6 +61,7 @@ namespace Clase_1
     	public void push(Comparable p){
     	    elementos.Add(p);
     	}
+    	
     	public Comparable pop(){
         	Comparable resultado = elementos[elementos.Count-1];
         	elementos.RemoveAt(elementos.Count-1);
@@ -108,12 +114,18 @@ namespace Clase_1
     	}
     	
 }
-	public class Cola : Coleccionable{
+	public class Cola : Coleccionable,  Iterable{
 		private List<Comparable> elementos;
-
+		private int Contador;
+		
+		public Iterator crearIterador(){
+    		return new IteradorDeCollection(elementos,Contador);
+    	}
+		
     	public Cola(){
         	elementos = new List<Comparable>();
     	}
+		
     	public void push(Comparable c){
     	    elementos.Add(c);
     	}

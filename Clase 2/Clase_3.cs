@@ -15,6 +15,7 @@ namespace Clase_3
 			
 			Console.ReadKey(true);
 		}
+		//Ejercicio n°6
 		public static void LlenarUnico(Coleccionable Col,int Option){
 			for (int i = 0; i < 20; i++) {
 				Comparable comp = Fabrica.CrearAleatorio(Option);
@@ -24,6 +25,9 @@ namespace Clase_3
 				Comparable comp = Fabrica.CrearPorTeclado(Option);
 				Col.agregar(comp);
 			}
+		}
+		public static void InformarUnico(){
+			
 		}
 	}
 	//Ejercicio n°3
@@ -45,7 +49,6 @@ namespace Clase_3
 			foreach (var element in nombre) {
 				if (Cant!=null || Cant!=0) {
 					Console.WriteLine(nombre[Cant-1]);
-					//return nombre[Cant-1];
 				}
 			}
 		}
