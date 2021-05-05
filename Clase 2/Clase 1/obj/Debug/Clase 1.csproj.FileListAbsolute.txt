@@ -1,0 +1,6 @@
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\bin\Debug\Clase 1.exe.config
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\bin\Debug\Clase 1.exe
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\bin\Debug\Clase 1.pdb
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\obj\Debug\Clase 1.csprojResolveAssemblyReference.cache
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\obj\Debug\Clase 1.exe
+D:\Universidad 2021\000--Metodologia1\Practicas\Clase 1\obj\Debug\Clase 1.pdb
