@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Clase_1;
 using Clase_3;
+using Clase_4;
+using MetodologíasDeProgramaciónI;
 
 //Pracitica n°2
 namespace Clase_2
@@ -34,63 +36,72 @@ namespace Clase_2
 	//2)CREAR las Sub-Clases
 	public class porNombre : Estrategia_Comp{ 
 		public bool sosIgual(Comparable a, Comparable b){
-			if (((alumno)a).GetNombre().CompareTo(((alumno)b).GetNombre()) == 0)
+			if (((Ialumno)a).GetNombre().CompareTo(((Ialumno)b).GetNombre()) == 0)
 				return true;
 			else
 				return false;
 		}
-
+		
 		public bool sosMayor(Comparable a, Comparable b)
 		{
-			return (((alumno)a).GetNombre().CompareTo(((alumno)b).GetNombre()) == 1);
+			return (((Ialumno)a).GetNombre().CompareTo(((Ialumno)b).GetNombre()) == 1);
 		}
 
 		public bool sosMenor(Comparable a, Comparable b){
-			return (((alumno)a).GetNombre().CompareTo(((alumno)b).GetNombre()) == -1);
+			return (((Ialumno)a).GetNombre().CompareTo(((Ialumno)b).GetNombre()) == -1);
 		}
 		public string Imrimir(Comparable a){
-			return "NOMBRE: "+ ((alumno)a).GetNombre();
+			return "NOMBRE: "+ ((Ialumno)a).GetNombre();
 		}
 	}//termiado
 	public class porDNI : Estrategia_Comp{
 		public bool sosIgual(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetDni() == ((alumno)b).GetDni();
+			return ((Ialumno)a).GetDNI() == ((Ialumno)b).GetDNI();
 		}
 		public bool sosMenor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetDni() < ((alumno)b).GetDni();
+			return ((Ialumno)a).GetDNI() < ((Ialumno)b).GetDNI();
 		}
 		public bool sosMayor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetDni() > ((alumno)b).GetDni();
+			return ((Ialumno)a).GetDNI() > ((Ialumno)b).GetDNI();
 		}
+		public string Imrimir(Comparable a){
+			return "DNI: "+ ((Ialumno)a).GetDNI();
+		}	
 	}//terminado
 	public class porPromedio : Estrategia_Comp{
 		public bool sosIgual(Comparable a,Comparable b){
-			return ((alumno)a).GetPromedio() == ((alumno)a).GetPromedio();
+			return ((Ialumno)a).GetPromedio() == ((Ialumno)a).GetPromedio();
 		}
 		public bool sosMenor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetPromedio() < ((alumno)b).GetPromedio();
+			return ((Ialumno)a).GetPromedio() < ((Ialumno)b).GetPromedio();
 		}
 		public bool sosMayor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetPromedio() > ((alumno)b).GetPromedio();
+			return ((Ialumno)a).GetPromedio() > ((Ialumno)b).GetPromedio();
+		}
+		public string Imrimir(Comparable a){
+			return "Promedio: "+ ((Ialumno)a).GetPromedio();
 		}
 	}//terminado
 	public class porlegajo : Estrategia_Comp{
 		public bool sosIgual(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetLegajo() == ((alumno)b).GetLegajo();
+			return ((Ialumno)a).GetLegajo() == ((Ialumno)b).GetLegajo();
 		}
 		public bool sosMenor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetLegajo() < ((alumno)b).GetLegajo();
+			return ((Ialumno)a).GetLegajo() < ((Ialumno)b).GetLegajo();
 		}
 		public bool sosMayor(Comparable a, Comparable b)
 		{
-			return ((alumno)a).GetLegajo() > ((alumno)b).GetLegajo();
+			return ((Ialumno)a).GetLegajo() > ((Ialumno)b).GetLegajo();
+		}
+		public string Imrimir(Comparable a){
+			return "Legajo: "+ ((Ialumno)a).GetLegajo();
 		}
 	}//terminado
 	
@@ -99,7 +110,7 @@ namespace Clase_2
 		void Primero();
 		void Siguiente();
 		bool Fin();
-		Iterable Actual();
+		Comparable Actual();
 	}
 	public interface Iterable{
 		Iterator crearIterador();
@@ -109,7 +120,7 @@ namespace Clase_2
 		private List<Comparable> Lista;
 		
 		public IteradorDeCollection(List<Comparable> L,int Cont){
-			L= Lista;
+			Lista=L;
 			Cont=0;
 		}
 		
@@ -125,8 +136,8 @@ namespace Clase_2
 			else
 				return false;
 		}
-		public Iterable Actual(){
-			return (Iterable)Lista[Cont];
+		public Comparable Actual(){
+			return (Comparable)Lista[Cont];
 		}
 	}
 	
@@ -198,6 +209,10 @@ namespace Clase_2
 		private Comparable Clave;
 		private Comparable Valor;
 		
+		public ClaveValor(){
+		
+		}
+		
 		public ClaveValor(Comparable C, Comparable V){
 			Clave=C;
 			Valor=V;
@@ -224,11 +239,10 @@ namespace Clase_2
 		}
 		
 	}
-	public class Dictionary : ClaveValor{
+	public class Dictionary{
 		private List<ClaveValor> ClV;
 		private int x = 1;
-		
-		public Dictionary(Comparable C, Comparable V): base(C, V){
+		public Dictionary (){
 			ClV = new List<ClaveValor>();
 		}
 		
@@ -310,8 +324,8 @@ namespace Clase_2
 				return false;
 		}
 		
-		public Iterable Actual(){
-			return (Iterable)Lista[Cont].GetValor();
+		public Comparable Actual(){
+			return (Comparable)Lista[Cont].GetValor();
 		}
 	
 	}
